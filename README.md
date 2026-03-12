@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -132,9 +131,6 @@ View on Devpost
 <p>
 Created 5 challanges for the ISSessions FantasyCTF. Challanges will be added here once the repository goes public.
 </p>
-<a href="https://devpost.com/software/qz-management" target="_blank">
-View on Devpost
-</a>
 </div>
 
 <div class="project">

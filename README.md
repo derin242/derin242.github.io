@@ -130,12 +130,13 @@ View on Devpost
 <h3>2026 ISSessions FantasyCTF</h3>
 <p>
 Created 5 challanges for the ISSessions FantasyCTF (2 Web challanges and 3 Open-source Intelligence Challanges). All of my challanges will be added here once the repository goes public.
+</p>
 
 My best web challange: E-Bazaar
 <a href="https://github.com/derin242/E-Bazaar-Writeup" target="_blank">
 Click here to view my official write-up for E-Bazaar
 </a>
-</p>
+
 </div>
 
 <div class="project">

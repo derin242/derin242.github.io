@@ -132,7 +132,9 @@ View on Devpost
 Created 5 challanges for the ISSessions FantasyCTF (2 Web challanges and 3 Open-source Intelligence Challanges). All of my challanges will be added here once the repository goes public.
 
 My best web challange: E-Bazaar
-My official write-up for E-Bazaar: https://github.com/derin242/E-Bazaar-Writeup
+<a href="https://github.com/derin242/E-Bazaar-Writeup" target="_blank">
+Click here to view my official write-up for E-Bazaar
+</a>
 </p>
 </div>
 

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,15 +9,15 @@
 
         :root {
 
-            --term-main: #ffffff;     
+            --term-main: #ffffff;      
 
             --term-glow: #f8fafc;      
 
             --term-dim: #64748b;       
 
-            --term-bg: #020617;        
+            --term-bg: #020617;      
 
-            --font-main: "Lucida Console", "Courier New", monospace;
+            --font-main: "Lucida Console", "Monaco", "Consolas", "Bitstream Vera Sans Mono", monospace;
 
             --neon-glow: 0 0 10px rgba(255, 255, 255, 0.3);
 
@@ -40,6 +39,7 @@
             overflow-x: hidden;
 
         }
+
 
         body::before {
 

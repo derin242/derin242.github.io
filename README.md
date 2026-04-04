@@ -1,162 +1,364 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Derin Ozturk | Cybersecurity Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derin Ozturk | Cybersecurity Portfolio</title>
 
-<style>
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#0f172a;
-    color:#e2e8f0;
-}
 
-header{
-    text-align:center;
-    padding:60px 20px;
-    background:#020617;
-}
+    <style>
 
-header h1{
-    font-size:40px;
-    margin-bottom:10px;
-}
+        :root {
 
-header p{
-    font-size:18px;
-    color:#94a3b8;
-}
+            --term-main: #ffffff;     
 
-nav{
-    text-align:center;
-    background:#020617;
-    padding:15px;
-}
+            --term-glow: #f8fafc;      
 
-nav a{
-    color:#e2e8f0;
-    margin:0 20px;
-    text-decoration:none;
-    font-weight:bold;
-}
+            --term-dim: #64748b;       
 
-nav a:hover{
-    color:#38bdf8;
-}
+            --term-bg: #020617;        
 
-section{
-    max-width:1000px;
-    margin:auto;
-    padding:60px 20px;
-}
+            --font-main: "Lucida Console", "Courier New", monospace;
 
-.projects{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
+            --neon-glow: 0 0 10px rgba(255, 255, 255, 0.3);
 
-.project{
-    background:#020617;
-    border:1px solid #1e293b;
-    border-radius:10px;
-    padding:25px;
-}
+        }
 
-.project h3{
-    margin-top:0;
-}
 
-.project a{
-    display:inline-block;
-    margin-top:10px;
-    color:#38bdf8;
-    text-decoration:none;
-}
+        body {
 
-.project a:hover{
-    text-decoration:underline;
-}
+            margin: 0;
 
-footer{
-    text-align:center;
-    padding:25px;
-    background:#020617;
-    color:#94a3b8;
-}
-</style>
+            font-family: var(--font-main);
+
+            background: var(--term-bg);
+
+            color: var(--term-main);
+
+            line-height: 1.6;
+
+            overflow-x: hidden;
+
+        }
+
+        body::before {
+
+            content: " ";
+
+            display: block;
+
+            position: fixed;
+
+            top: 0; left: 0; bottom: 0; right: 0;
+
+            background: linear-gradient(
+
+                rgba(18, 16, 16, 0) 50%, 
+
+                rgba(255, 255, 255, 0.02) 50%
+
+            );
+
+            z-index: 9999;
+
+            background-size: 100% 3px;
+
+            pointer-events: none;
+
+        }
+
+
+        header {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 60px 20px;
+
+            border-bottom: 1px solid var(--term-dim);
+
+            text-shadow: var(--neon-glow);
+
+        }
+
+
+        header h1 {
+
+            font-size: 36px;
+
+            margin: 0;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        header h1::before { content: "> "; opacity: 0.5; }
+
+
+        header p {
+
+            font-size: 18px;
+
+            color: var(--term-dim);
+
+            margin-top: 10px;
+
+        }
+
+
+        nav {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 20px;
+
+            display: flex;
+
+            gap: 30px;
+
+        }
+
+
+        nav a {
+
+            color: var(--term-main);
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            text-transform: uppercase;
+
+            border: 1px solid transparent;
+
+            padding: 5px 10px;
+
+            transition: 0.3s;
+
+        }
+
+
+        nav a:hover {
+
+            border: 1px solid var(--term-main);
+
+            box-shadow: var(--neon-glow);
+
+        }
+
+
+        section {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 50px 20px;
+
+        }
+
+
+        h2 {
+
+            font-size: 20px;
+
+            color: var(--term-dim);
+
+            text-transform: uppercase;
+
+            margin-bottom: 30px;
+
+            letter-spacing: 4px;
+
+        }
+
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 30px;
+
+        }
+
+
+        .project {
+
+            border: 1px solid #1e293b;
+
+            padding: 30px;
+
+            background: rgba(255, 255, 255, 0.01);
+
+            transition: all 0.3s ease;
+
+        }
+
+
+        .project:hover {
+
+            border-color: var(--term-main);
+
+            box-shadow: var(--neon-glow);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        .project h3 {
+
+            margin-top: 0;
+
+            font-size: 18px;
+
+        }
+
+
+        .project p {
+
+            color: #cbd5e1;
+
+            font-size: 14px;
+
+        }
+
+
+        .project a {
+
+            color: var(--term-main);
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            border: 1px solid var(--term-dim);
+
+            padding: 8px 12px;
+
+            display: inline-block;
+
+            margin-top: 20px;
+
+        }
+
+
+        .project a:hover {
+
+            background: var(--term-main);
+
+            color: var(--term-bg);
+
+            border-color: var(--term-main);
+
+        }
+
+
+        footer {
+
+            text-align: center;
+
+            padding: 60px;
+
+            color: var(--term-dim);
+
+            font-size: 11px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* Responsive */
+
+        @media (max-width: 600px) {
+
+            header h1 { font-size: 24px; }
+
+            nav { flex-direction: column; gap: 10px; }
+
+        }
+
+    </style>
+
+
+
 </head>
 
 <body>
 
 <header>
-<h1>Derin Ozturk</h1>
-<p>Cybersecurity Student</p>
+    <h1>Derin Ozturk</h1>
+    <p>Identity: Cybersecurity Student / Developer</p>
+    <p>Status: 2nd Year, expected to graudate in 2028</p>
 </header>
 
 <nav>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+    <a href="#about">[01] About</a>
+    <a href="#projects">[02] Projects</a>
+    <a href="#contact">[03] Contact</a>
 </nav>
 
 <section id="about">
-<h2>About Me</h2>
-<p>
-I am a cybersecurity student interested in penetration testing,
-web developement, secure software development, and vulnerability research.
-I enjoy participating in security labs, hackathons, and building
-projects that improve system security and automation.
-</p>
+    <h2>About_Me</h2>
+    <p>
+        I am a cybersecurity student with an interest in penetration testing (especially web), vulnerability research, and secure software developement. 
+        I enjoy participating in security labs, CTFs, hackathons, and building projects that improve system security and automation.
+    </p>
 </section>
 
 <section id="projects">
-<h2>Projects</h2>
+    <h2>Filesystem / Projects</h2>
 
-<div class="projects">
+    <div class="projects">
+        <div class="project">
+            <h3>QZ_Management</h3>
+            <p>Full-stack security infrastructure tool. Automates vulnerability detection using Gemini AI normalization and NIST NVD cross-referencing.</p>
+            <a href="https://devpost.com/software/qz-management">Execute Link</a>
+        </div>
 
-<div class="project">
-<h3>QZ Management</h3>
-<p>
-QZ Management is a full-stack security infrastructure tool designed to automate vulnerability detection across corporate networks. The system utilizes a distributed architecture consisting of a Python-based client agent and a centralized management server. The agent monitors local software registries and relays version data to the server, where it is processed using Gemini AI to normalize naming conventions. This data is then cross-referenced with the NIST National Vulnerability Database (NVD) API to provide real-time risk analysis, allowing system administrators to identify and mitigate exploits through a modern React-based dashboard.
-</p>
-<a href="https://devpost.com/software/qz-management" target="_blank">
-View on Devpost
-</a>
-</div>
+        <div class="project">
+            <h3>ISSessions_FantasyCTF</h3>
+            <p>Developed 5 security CTF challenges (Web Exploitation & OSINT). Featured project: E-Bazaar.</p>
+            <a href="https://github.com/derin242/E-Bazaar-Writeup">Read_Writeup</a>
+        </div>
 
-<div class="project">
-<h3>2026 ISSessions FantasyCTF</h3>
-<p>
-Created 5 challanges for the ISSessions FantasyCTF (2 Web challanges and 3 Open-source Intelligence Challanges). All of my challanges will be added here once the repository goes public.
-</p>
+        <div class="project">
+            <h3>Paddington_Ext</h3>
+            <p>Firefox extension utilizing BeautifulSoup (web scraping) and Perplexity AI for bias analysis of news metadata.</p>
+            <a href="https://devpost.com/software/paddington">Execute Link</a>
+        </div>
+    </div>
+</section>
 
-My best web challange: E-Bazaar
-<a href="https://github.com/derin242/E-Bazaar-Writeup" target="_blank">
-Click here to view my official write-up for E-Bazaar
-</a>
-
-</div>
-
-<div class="project">
-<h3>Paddington</h3>
-<p>
-Paddington is a Firefox browser extension that helps users quickly determine whether an online article may be biased before reading it. When the user clicks the analyze button, the extension sends the article URL to a local Python server built with Flask. The server retrieves the webpage content, extracts the text using BeautifulSoup, and sends it to the Perplexity AI API for bias analysis. The result is returned to the extension and displayed to the user, helping them quickly evaluate the reliability and potential bias of news content.
-
-Technologies: Python, Flask, JavaScript, HTML, CSS, BeautifulSoup, APIs, JSON, Perplexity AI.
-</p>
-<a href="https://devpost.com/software/paddington" target="_blank">
-View on Devpost
-</a>
-</div>
-
-</div>
+<section id="contact">
+    <h2>Comm_Channel</h2>
+    <p>> <a href="https://www.linkedin.com/in/derin-ozturk">LinkedIn_Connect</a></p>
 </section>
 
 <footer>
-<p>© 2026 Derin Ozturk | Portfolio</p>
+    <p>END OF LINE. © 2026 Derin Ozturk</p>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            if (!link.getAttribute('href').startsWith('#')) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

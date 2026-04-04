@@ -17,7 +17,7 @@
 
             --term-bg: #020617;      
 
-            --font-main: "Lucida Console", "Monaco", "Consolas", "Bitstream Vera Sans Mono", monospace;
+            --font-main: "Lucida Console", "Monaco", "Consolas", "Ubuntu Mono", "Liberation Mono", "Dejavu Sans Mono", monospace;
 
             --neon-glow: 0 0 10px rgba(255, 255, 255, 0.3);
 

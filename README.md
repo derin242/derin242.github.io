@@ -325,7 +325,7 @@
         </div>
 
         <div class="project">
-            <h3>Paddington_Ext</h3>
+            <h3>Paddington_Extension</h3>
             <p>Firefox extension utilizing BeautifulSoup (web scraping) and Perplexity AI for bias analysis of news metadata.</p>
             <a href="https://devpost.com/software/paddington">Execute Link</a>
         </div>

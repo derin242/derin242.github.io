@@ -17,29 +17,21 @@
             --term-dim: #64748b;       
 
             --term-bg: #020617;      
+            
+            --font-main: "JetBrains Mono", "Lucida Console", "Monaco", monospace;
+            
+            --neon-glow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
 
-            --font-main: "Lucida Console", "Monaco", "Consolas", "Ubuntu Mono", "Liberation Mono", "Dejavu Sans Mono", monospace;
-
-            --neon-glow: 0 0 10px rgba(255, 255, 255, 0.3);
-
-        }
-
-
-        body {
-
-            margin: 0;
-
-            font-family: var(--font-main);
-
-            background: var(--term-bg);
-
-            color: var(--term-main);
-
-            line-height: 1.6;
-
-            overflow-x: hidden;
-
-        }
+    body {
+        margin: 0;
+        font-family: var(--font-main);
+        background: var(--term-bg);
+        color: var(--term-main);
+        line-height: 1.6;
+        letter-spacing: 0.5px; /* Adds that terminal feel */
+        overflow-x: hidden;
+    }
 
 
         body::before {

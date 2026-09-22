@@ -1,346 +1,542 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Derin Ozturk | Cybersecurity Portfolio</title>
-
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-
         :root {
-
-            --term-main: #ffffff;      
-
-            --term-glow: #f8fafc;      
-
-            --term-dim: #64748b;       
-
-            --term-bg: #020617;      
+            --term-main: #e2e8f0;
+            --term-bright: #ffffff;
+            --term-dim: #64748b;
+            --term-accent: #38bdf8;
+            --term-bg: #030712;
+            --panel-bg: rgba(15, 23, 42, 0.45);
+            --panel-border: rgba(51, 65, 85, 0.7);
+            --panel-border-hover: rgba(56, 189, 248, 0.5);
             
-            --font-main: "JetBrains Mono", "Lucida Console", "Monaco", monospace;
-            
-            --neon-glow: 0 0 8px rgba(255, 255, 255, 0.4);
-    }
-
-    body {
-        margin: 0;
-        font-family: var(--font-main);
-        background: var(--term-bg);
-        color: var(--term-main);
-        line-height: 1.6;
-        letter-spacing: 0.5px; /* Adds that terminal feel */
-        overflow-x: hidden;
-    }
-
-
-        body::before {
-
-            content: " ";
-
-            display: block;
-
-            position: fixed;
-
-            top: 0; left: 0; bottom: 0; right: 0;
-
-            background: linear-gradient(
-
-                rgba(18, 16, 16, 0) 50%, 
-
-                rgba(255, 255, 255, 0.02) 50%
-
-            );
-
-            z-index: 9999;
-
-            background-size: 100% 3px;
-
-            pointer-events: none;
-
+            --font-main: "JetBrains Mono", monospace;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background: var(--term-bg);
+            color: var(--term-main);
+            line-height: 1.6;
+            font-size: 14px;
+            letter-spacing: 0.2px;
+            overflow-x: hidden;
+        }
+
+        /* Ambient scanline effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.25) 50%
+            );
+            z-index: 9999;
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
         header {
-
-            max-width: 1000px;
-
-            margin: auto;
-
-            padding: 60px 20px;
-
-            border-bottom: 1px solid var(--term-dim);
-
-            text-shadow: var(--neon-glow);
-
+            padding: 70px 0 30px 0;
+            border-bottom: 1px dashed var(--panel-border);
         }
 
-
-        header h1 {
-
-            font-size: 36px;
-
-            margin: 0;
-
-            letter-spacing: 2px;
-
-            text-transform: uppercase;
-
-        }
-
-
-        header h1::before { content: "> "; opacity: 0.5; }
-
-
-        header p {
-
-            font-size: 18px;
-
-            color: var(--term-dim);
-
-            margin-top: 10px;
-
-        }
-
-
-        nav {
-
-            max-width: 1000px;
-
-            margin: auto;
-
-            padding: 20px;
-
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--term-bright);
+            margin: 0 0 12px 0;
+            letter-spacing: 1px;
             display: flex;
-
-            gap: 30px;
-
+            align-items: center;
+            gap: 10px;
         }
 
+        .header-title::before {
+            content: ">";
+            color: var(--term-accent);
+        }
+
+        .header-meta {
+            color: var(--term-dim);
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .header-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #22c55e;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 24px 0;
+            display: flex;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            background: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+        }
 
         nav a {
-
-            color: var(--term-main);
-
+            color: var(--term-dim);
             text-decoration: none;
-
-            font-size: 14px;
-
-            text-transform: uppercase;
-
-            border: 1px solid transparent;
-
-            padding: 5px 10px;
-
-            transition: 0.3s;
-
+            font-size: 13px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
         }
-
 
         nav a:hover {
-
-            border: 1px solid var(--term-main);
-
-            box-shadow: var(--neon-glow);
-
+            color: var(--term-bright);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-
+        /* Sections */
         section {
-
-            max-width: 1000px;
-
-            margin: auto;
-
-            padding: 50px 20px;
-
+            padding: 48px 0;
         }
-
 
         h2 {
-
-            font-size: 20px;
-
-            color: var(--term-dim);
-
-            text-transform: uppercase;
-
-            margin-bottom: 30px;
-
-            letter-spacing: 4px;
-
-        }
-
-
-        .projects {
-
-            display: grid;
-
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-            gap: 30px;
-
-        }
-
-
-        .project {
-
-            border: 1px solid #1e293b;
-
-            padding: 30px;
-
-            background: rgba(255, 255, 255, 0.01);
-
-            transition: all 0.3s ease;
-
-        }
-
-
-        .project:hover {
-
-            border-color: var(--term-main);
-
-            box-shadow: var(--neon-glow);
-
-            transform: translateY(-2px);
-
-        }
-
-
-        .project h3 {
-
-            margin-top: 0;
-
-            font-size: 18px;
-
-        }
-
-
-        .project p {
-
-            color: #cbd5e1;
-
             font-size: 14px;
-
+            font-weight: 700;
+            color: var(--term-accent);
+            text-transform: uppercase;
+            margin: 0 0 24px 0;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--panel-border);
+        }
 
-        .project a {
+        .about-text {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0;
+        }
 
-            color: var(--term-main);
+        /* Experience Section */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-            text-decoration: none;
+        .experience-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            padding: 24px;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
 
+        .experience-card:hover {
+            border-color: var(--panel-border-hover);
+            transform: translateY(-2px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .exp-role {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--term-bright);
+            margin: 0;
+        }
+
+        .exp-company {
+            color: var(--term-accent);
+            font-weight: 500;
+        }
+
+        .exp-date {
             font-size: 12px;
-
-            border: 1px solid var(--term-dim);
-
-            padding: 8px 12px;
-
-            display: inline-block;
-
-            margin-top: 20px;
-
+            color: var(--term-dim);
+            white-space: nowrap;
         }
 
+        .exp-location {
+            font-size: 12px;
+            color: var(--term-dim);
+            margin-bottom: 12px;
+        }
 
-        .project a:hover {
+        .exp-desc {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0 0 16px 0;
+        }
 
-            background: var(--term-main);
+        .exp-bullets {
+            margin: 0 0 16px 0;
+            padding-left: 18px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
 
+        .exp-bullets li {
+            margin-bottom: 6px;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            font-size: 11px;
+            color: var(--term-dim);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            padding: 2px 8px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            border-radius: 6px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--panel-border-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--term-bright);
+        }
+
+        .project-tag {
+            font-size: 11px;
+            color: var(--term-dim);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .project-desc {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .project-link {
+            align-self: flex-start;
+            color: var(--term-main);
+            text-decoration: none;
+            font-size: 12px;
+            padding: 6px 12px;
+            border: 1px solid var(--panel-border);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s ease;
+        }
+
+        .project-link:hover {
+            background: var(--term-bright);
             color: var(--term-bg);
-
-            border-color: var(--term-main);
-
+            border-color: var(--term-bright);
+            font-weight: 500;
         }
 
+        /* Contact & Links */
+        .contact-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: var(--term-bright);
+            text-decoration: none;
+            font-size: 13px;
+            border: 1px solid var(--panel-border);
+            padding: 10px 16px;
+            border-radius: 4px;
+            background: var(--panel-bg);
+            transition: all 0.2s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--term-accent);
+            color: var(--term-accent);
+        }
 
         footer {
-
+            padding: 60px 0;
             text-align: center;
-
-            padding: 60px;
-
             color: var(--term-dim);
-
-            font-size: 11px;
-
-            letter-spacing: 2px;
-
+            font-size: 12px;
+            border-top: 1px dashed var(--panel-border);
         }
 
-
-        /* Responsive */
-
-        @media (max-width: 600px) {
-
-            header h1 { font-size: 24px; }
-
-            nav { flex-direction: column; gap: 10px; }
-
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            header {
+                padding: 40px 0 20px 0;
+            }
+            .header-title {
+                font-size: 22px;
+            }
         }
-
     </style>
-
-
-
 </head>
-
 <body>
 
-<header>
-    <h1>Derin Ozturk</h1>
-    <p>Identity: Cybersecurity Student / Developer</p>
-    <p>Status: 2nd Year, expected to graudate in 2028</p>
-</header>
-
-<nav>
-    <a href="#about">[01] About</a>
-    <a href="#projects">[02] Projects</a>
-    <a href="#contact">[03] Contact</a>
-</nav>
-
-<section id="about">
-    <h2>About_Me</h2>
-    <p>
-        I am a cybersecurity student with an interest in penetration testing (especially web), vulnerability research, and secure software developement. 
-        I enjoy participating in security labs, CTFs, hackathons, and building projects that improve system security and automation.
-    </p>
-</section>
-
-<section id="projects">
-    <h2>Filesystem / Projects</h2>
-
-    <div class="projects">
-        <div class="project">
-            <h3>QZ_Management</h3>
-            <p>Full-stack security infrastructure tool. Automates vulnerability detection using Gemini AI normalization and NIST NVD cross-referencing.</p>
-            <a href="https://devpost.com/software/qz-management">Execute Link</a>
+<div class="container">
+    <header>
+        <h1 class="header-title">Derin Ozturk</h1>
+        <div class="header-meta">
+            <span><span class="status-dot"></span> Cybersecurity Student</span>
+            <span>Location: Sheridan College | 3rd Year (Graduation: 2028)</span>
         </div>
+    </header>
 
-        <div class="project">
-            <h3>ISSessions_FantasyCTF</h3>
-            <p>Developed 5 security CTF challenges (Web Exploitation & OSINT). Featured project: E-Bazaar.</p>
-            <a href="https://github.com/derin242/E-Bazaar-Writeup">Read_Writeup</a>
+    <nav>
+        <a href="#about">[01] About</a>
+        <a href="#experience">[02] Experience</a>
+        <a href="#projects">[03] Projects</a>
+        <a href="#contact">[04] Contact</a>
+    </nav>
+
+    <section id="about">
+        <h2>About_Me</h2>
+        <p class="about-text">
+            I am a cybersecurity student focused on web application security, penetration testing, vulnerability research, and secure software development. I regularly work through security labs, compete in CTFs and hackathons, and build tooling to automate security analysis and system management. My favorite subject of all is web application security :D
+        </p>
+    </section>
+
+    <section id="projects">
+        <h2>Filesystem / Projects</h2>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <h3 class="project-title">QZ_Management</h3>
+                        <span class="project-tag">Security / AI</span>
+                    </div>
+                    <p class="project-desc">
+                        Full-stack security infrastructure tool. Automates vulnerability detection using Gemini AI normalization and NIST NVD cross-referencing.
+                    </p>
+                </div>
+                <a href="https://devpost.com/software/qz-management" class="project-link">Devpost Link &rarr;</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <h3 class="project-title">ISSessions_FantasyCTF</h3>
+                        <span class="project-tag">CTF / Web App</span>
+                    </div>
+                    <p class="project-desc">
+                        Developed 5 security CTF challenges covering Web Exploitation & OSINT for ISSessions Fantasy CTF. Featured challenge: E-Bazaar.
+                    </p>
+                </div>
+                <a href="https://github.com/derin242/E-Bazaar-Writeup" class="project-link">Read Writeup &rarr;</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <h3 class="project-title">Cant_Bear_Boredom</h3>
+                        <span class="project-tag">Web App / AI</span>
+                    </div>
+                    <p class="project-desc">
+                        Full-stack application powered by Flask, Tailwind CSS, and Gemini API that dynamically generates web tools and micro-apps on demand.
+                    </p>
+                </div>
+                <a href="https://github.com/derin242/Cant-Bear-Boredom" class="project-link">Source Code &rarr;</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <h3 class="project-title">PortSwigger_Labs</h3>
+                        <span class="project-tag">Web Pentesting</span>
+                    </div>
+                    <p class="project-desc">
+                        Comprehensive writeups and solution walkthroughs for PortSwigger Web Security Academy labs.
+                    </p>
+                </div>
+                <a href="https://github.com/derin242/PortSwigger-Lab-Write-ups" class="project-link">See Writeups &rarr;</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-header">
+                        <h3 class="project-title">Paddington_Extension</h3>
+                        <span class="project-tag">Firefox Add-on</span>
+                    </div>
+                    <p class="project-desc">
+                        Firefox extension utilizing BeautifulSoup and Perplexity AI to analyze metadata and evaluate bias in online news articles.
+                    </p>
+                </div>
+                <a href="https://devpost.com/software/paddington" class="project-link">Devpost Link &rarr;</a>
+            </div>
         </div>
+    </section>
 
-        <div class="project">
-            <h3>Paddington_Extension</h3>
-            <p>Firefox extension utilizing BeautifulSoup (web scraping) and Perplexity AI for bias analysis of news metadata.</p>
-            <a href="https://devpost.com/software/paddington">Execute Link</a>
+    <section id="experience">
+        <h2>Log / Experience</h2>
+        <div class="experience-list">
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <h3 class="exp-role">AI Researcher</h3>
+                        <span class="exp-company">Sheridan College</span> &bull; <span style="font-size: 12px; color: var(--term-dim);">Contract Part-time</span>
+                    </div>
+                    <span class="exp-date">Sep 2026 - Present</span>
+                </div>
+                <div class="exp-location">Oakville, Ontario, Canada &bull; On-site</div>
+                <p class="exp-desc">
+                    Ensuring accuracy and transparency in Generative AI through reasoning observability.
+                </p>
+                <div class="tags-container">
+                    <span class="skill-tag">Research Skills</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Generative AI</span>
+                    <span class="skill-tag">Observability</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <h3 class="exp-role">CTF Developer</h3>
+                        <span class="exp-company">ISSessions</span>
+                    </div>
+                    <span class="exp-date">Sep 2025 - Present</span>
+                </div>
+                <div class="exp-location">Oakville, Ontario, Canada</div>
+                <p class="exp-desc">
+                    Developing CTF challenges for the largest academic information security club in Canada.
+                </p>
+                <div class="tags-container">
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">Back-End Web Development</span>
+                    <span class="skill-tag">Web Exploitation</span>
+                    <span class="skill-tag">OSINT</span>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <h3 class="exp-role">Cybersecurity Intern (Voluntary)</h3>
+                        <span class="exp-company">Trend Micro</span> &bull; <span style="font-size: 12px; color: var(--term-dim);">Internship</span>
+                    </div>
+                    <span class="exp-date">Jul 2025 - Aug 2025</span>
+                </div>
+                <div class="exp-location">Ankara, Türkiye &bull; On-site</div>
+                <ul class="exp-bullets">
+                    <li>Configured and optimized Trend Micro Apex One for advanced endpoint protection and threat detection.</li>
+                    <li>Managed server workloads using Deep Security, implementing intrusion prevention (IPS), firewall policies, and log inspection.</li>
+                    <li>Simplified complex cybersecurity concepts into accessible "non-tech" presentations for client-facing demos, focusing on the why behind the product.</li>
+                    <li>Recognized by leadership for initiative and the ability to rapidly master complex security infrastructures within a one-month window.</li>
+                </ul>
+                <div class="tags-container">
+                    <span class="skill-tag">Deep Security</span>
+                    <span class="skill-tag">Apex One</span>
+                    <span class="skill-tag">Endpoint Protection</span>
+                    <span class="skill-tag">Threat Detection</span>
+                </div>
+            </div>
+
         </div>
-    </div>
-</section>
-
-<section id="contact">
-    <h2>Comm_Channel</h2>
-    <p>> <a href="https://www.linkedin.com/in/derin-ozturk">LinkedIn_Connect</a></p>
-</section>
-
-<footer>
-    <p>END OF LINE. © 2026 Derin Ozturk</p>
-</footer>
-
+    </section>
+	    <section id="contact">
+        <h2>Comm_Channel</h2>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/derin-ozturk" class="contact-item">LinkedIn &rarr;</a>
+            <a href="https://github.com/derin242" class="contact-item">GitHub Profile &rarr;</a>
+        </div>
+    </section>
+    <footer>
+        <p>END OF LINE. &copy; 2026 Derin Ozturk</p>
+    </footer>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const links = document.querySelectorAll('a');
